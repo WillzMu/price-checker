@@ -32,7 +32,7 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("check.price")
+    zone = parameters.get("Item-Cost")
 
     cost = {'milk':10, 'bread':8, 'eggs':20}
 
