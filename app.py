@@ -50,7 +50,7 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     zone = []
-    zone = parameters.get("cart")
+    zone = parameters.get("Item-Cost")
     cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
     total = 0
     for x in zone:
