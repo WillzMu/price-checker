@@ -32,9 +32,26 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = []
     zone = parameters.get("Item-Cost")
-    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yogurt':13}
+    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
+    speech = "The cost of  " + zone + " is K" + str(cost[zone]) + "."
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        #"data": {},
+        # "contextOut": [],
+        "source": "apiai-pricechecker"
+    }
+   elif req.get("result").get("action")!="make.order":
+       return{}
+    result = req.get("result")
+    parameters = result.get("parameters")
+    zone = []
+    zone = parameters.get("cart")
+    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
     total = 0
     for x in zone:
      total += cost[x]
@@ -49,7 +66,6 @@ def makeWebhookResult(req):
         # "contextOut": [],
         "source": "apiai-pricechecker"
     }
-
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
