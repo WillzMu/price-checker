@@ -36,8 +36,7 @@ def makeWebhookResult(req):
 
     cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yogurt':13}
     total = 0
-    goods = zone.split( );
-    for x in goods:
+    for x in zone:
         total += cost[x]
     speech = "The cost of your goods is K"+total
 
