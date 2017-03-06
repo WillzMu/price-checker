@@ -34,9 +34,11 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     zone = parameters.get("Item-Cost")
 
-    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
-
-    speech = "The cost of " + zone + " is " + str(cost[zone]) + " Kwacha."
+    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yogurt':13}
+    total = 0
+    for x in zone:
+        total += cost[x]
+   speech = "The cost of your goods is K"+total
 
     print("Response:")
     print(speech)
