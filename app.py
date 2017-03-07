@@ -45,7 +45,7 @@ def makeWebhookResult(req):
         # "contextOut": [],
         "source": "apiai-pricechecker"
     }
-   elif req.get("result").get("action")!="make.order":
+    elif req.get("result").get("action")!="make.order":
        return{}
     result = req.get("result")
     parameters = result.get("parameters")
