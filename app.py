@@ -28,36 +28,40 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "check.price":
-        return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone = parameters.get("Item-Cost")
-    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
-    speech = "The cost of  " + zone + " is K" + str(cost[zone]) + "."
-    print("Response:")
-    print(speech)
-    elif req.get("result").get("action") != "make.order":
-         return{}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone = []
-    zone = parameters.get("Item-Cost")
-    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
-    total = 0
-    for x in zone:
-     total += cost[x]
-    speech = "The cost of your goods is K"+ str(total)
-    print("Response:")
-    print(speech)
-  
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-pricechecker"
-    }
+    if req.get("result").get("action") == "check.price":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        zone = parameters.get("Item-Cost")
+        cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
+        speech = "The cost of  " + zone + " is K" + str(cost[zone]) + "."
+        print("Response:")
+        print(speech)
+        return {
+            "speech": speech,
+            "displayText": speech,
+            #"data": {},
+            # "contextOut": [],
+            "source": "apiai-pricechecker"
+                }
+    elif req.get("result").get("action") == "make.order":
+        result = req.get("result")
+        parameters = result.get("parameters")
+        zone = []
+        zone = parameters.get("Item-Cost")
+        cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
+        total = 0
+        for x in zone:
+            total += cost[x]
+        speech = "The cost of your goods is K"+ str(total)
+        print("Response:")
+        print(speech)
+        return {
+            "speech": speech,
+            "displayText": speech,
+            #"data": {},
+            # "contextOut": [],
+            "source": "apiai-pricechecker"
+                }
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
