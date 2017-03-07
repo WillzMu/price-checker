@@ -36,20 +36,7 @@ def makeWebhookResult(req):
     speech = "The cost of  " + zone + " is K" + str(cost[zone]) + "."
     print("Response:")
     print(speech)
-    
-    elif req.get("result").get("action")=="make.order":
-    result = req.get("result")
-    parameters = result.get("parameters")
-    zone = []
-    zone = parameters.get("cart")
-    cost = {'milk':10, 'bread':8, 'eggs':20, 'sugar':11,'yoghurt':13}
-    total = 0
-    for x in zone:
-     total += cost[x]
-    speech = "The cost of your goods is K"+ str(total)
-    print("Response:")
-    print(speech)
-
+  
     return {
         "speech": speech,
         "displayText": speech,
