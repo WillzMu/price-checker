@@ -36,14 +36,7 @@ def makeWebhookResult(req):
     speech = "The cost of  " + zone + " is K" + str(cost[zone]) + "."
     print("Response:")
     print(speech)
-
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-pricechecker"
-    }
+    
     elif req.get("result").get("action")=="make.order":
     result = req.get("result")
     parameters = result.get("parameters")
